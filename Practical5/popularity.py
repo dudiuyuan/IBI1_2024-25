@@ -15,7 +15,7 @@ for key in Dictionary:
 import pandas as pd                            #import nessasary libraries
 import matplotlib.pyplot as plt
 df = pd.DataFrame(list(Dictionary.items()), columns=['Language', 'Users_Percentage'])    #Use Pandas to convert dictionary data into data boxes, making it easy to use its built-in drawing function
-df.plot(kind='bar', x='Language', y='Users_Percentage', color='skyblue')     #Enter basic parameters to draw a bar chart
+df.plot(kind='bar', x='Language', y='Users_Percentage', color='purple')     #Enter basic parameters to draw a bar chart
 plt.title('Programming language popularity')    #add a title to the chart
 plt.show()
 

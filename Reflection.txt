@@ -1,4 +1,9 @@
-In Practical 3, I learned:
-Explain	the	principles	of	version	control	
-Manage	projects	with	git	and	github	
-Build	a	simple	website	using	github	pages	
+Reflection on Practical 3: Git, GitHub, and GitHub Pages
+﻿
+This practical session provided a hands-on introduction to version control using Git and GitHub, as well as the basics of creating a personal website with GitHub Pages. Version control is essential for tracking changes and collaborating efficiently. GitHub’s ecosystem simplifies project management and web hosting, making it accessible even for beginners. Below are my reflections on the process:
+﻿
+Initializing a repository, committing changes, and branching felt intuitive after practicing the commands. The git log --oneline command was particularly helpful for tracking commit history. Forking the repository and cloning it locally worked smoothly. Pushing changes back to GitHub using git push origin master was straightforward once I resolved a minor permission issue by reconfiguring credentials. Setting up the website using the github.io repository was exciting. 
+﻿
+I also faced some challenges: Merging the "friend" branch into master caused a conflict in thingsllike.txt. Resolving it required manually editing the file to keep desired changes, which was initially confusing but clarified my understanding of conflict resolution. When adding a theme via _config.yml took several attempts, I initially missed the step to specify the theme in the file, resulting in no style changes. Referencing GitHub’s documentation helped resolve this. Vim editor confusion: During git revert HEAD, the terminal opened Vim for editing commit messages. Exiting Vim (using :x) was unfamiliar.
+﻿
+Overall, this practical was a valuable introduction to tools that are foundational for modern software development and collaboration. While some steps were challenging, overcoming them significantly boosted my confidence in using version control systems.

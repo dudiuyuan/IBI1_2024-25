@@ -1,16 +1,9 @@
-# population = np.zeros((100,100))
-
-# outbreak =np.random.choice(range(100),2)
-# population[outbreak[0],outbreak[1]] = 1
-# plt.figure(figsize=(6,4),dpi=150)
-# plt.imshow(population, cmap='viridis', interpolation='nearest')
-
 # import necessary libraries
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
-size = 100                                          #
+size = 100                                          #Set basic parameters
 population = np.zeros((size, size))
 outbreak = np.random.choice(range(size), 2)
 population[outbreak[0], outbreak[1]] = 1

@@ -1,95 +1,68 @@
 import re
-
-valid_options = {'GTAG', 'GCAG', 'ATAG'}
-user_input = input("Enter splice donor/acceptor combination (GTAG, GCAG, ATAG): ").strip().upper()
-if user_input not in valid_options:
-    print("Invalid option. Please choose from GTAG, GCAG, ATAG.")
-    exit()
-
-donor = user_input[:2]
-acceptor = user_input[2:]
-output_filename = f"{user_input}_spliced_genes.fa"
-input_filename = 'Saccharomyces_cerevsizae.R64-1-1.cdna.all.fa'
-
-def is_spliced(seq, donor, acceptor):
-    pattern = re.escape(donor) + r'.+' + re.escape(acceptor)
-    return re.search(pattern, seq) is not None
-
-with open(input_filename, 'r') as f_in, open(output_filename, 'w') as f_out:
-    current_gene_name = None
-    current_sequence = []
-    for line in f_in:
-        line = line.strip()
-        if line.startswith('>'):
-            if current_gene_name is not None:
-                full_seq = ''.join(current_sequence)
-                if is_spliced(full_seq, donor, acceptor) and 'TATA' in full_seq:
-                    tata_count = full_seq.count('TATA')
-                    f_out.write(f'>{current_gene_name} {tata_count}\n{full_seq}\n')
-            match = re.search(r'gene:(\S+)', line)
-            current_gene_name = match.group(1) if match else None
-            current_sequence = []
-        else:
-            current_sequence.append(line)
-    if current_gene_name is not None:
-        full_seq = ''.join(current_sequence)
-        if is_spliced(full_seq, donor, acceptor) and 'TATA' in full_seq:
-            tata_count = full_seq.count('TATA')
-            f_out.write(f'>{current_gene_name} {tata_count}\n{full_seq}\n')
-
-
-
-
-
-
-#
-
-
+# This script counts the number of TATA boxes in spliced genes and outputs the results to a new FASTA file.
+# It prompts the user to select a splice donor/acceptor combination from a predefined list.
+#define a function to count TATA boxes in spliced genes
 import re
 
-# 让用户输入剪切供体/受体组合
-valid_splice_sites = ["GTAG", "GCAG", "ATAC"]
-splice_site = input(f"请输入剪切供体/受体组合 {valid_splice_sites}: ").strip().upper()
+def extract_gene_name(header):
+    """Extract gene name from FASTA header"""
+    match = re.search(r'gene:(\S+)', header)
+    if match:
+        return match.group(1)
+    return header.split(' ')[0][1:]  # Fallback: use the first word after >
 
-# 确保输入合法
-if splice_site not in valid_splice_sites:
-    print("输入无效，请输入 GTAG, GCAG 或 ATAC")
-    exit()
+def count_tata_boxes(sequence):
+    """Count occurrences of TATA box (TATAWAW where W is A or T)"""
+    return len(re.findall(r'TATA[AT]A[AT]', sequence))
 
-# 读取 FASTA 文件
-input_file = r"D:\IBI\IBI1_2024-25\Practical7\Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa"
-output_file = f"{splice_site}_spliced_genes.fa"
+def process_fasta(input_file, output_file, splice_site):
+    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+        current_gene = None
+        current_sequence = []
+        
+        for line in infile:
+            if line.startswith('>'):
+                # Process previous gene if we have one
+                if current_gene and current_sequence:
+                    full_sequence = ''.join(current_sequence)
+                    if splice_site in full_sequence:
+                        tata_count = count_tata_boxes(full_sequence)
+                        if tata_count > 0:
+                            gene_name = extract_gene_name(current_gene)
+                            outfile.write(f'>{gene_name} TATA_count:{tata_count}\n{full_sequence}\n')
+                
+                # Start new gene
+                current_gene = line.strip()
+                current_sequence = []
+            else:
+                current_sequence.append(line.strip())
+        
+        # Process the last gene in the file
+        if current_gene and current_sequence:
+            full_sequence = ''.join(current_sequence)
+            if splice_site in full_sequence:
+                tata_count = count_tata_boxes(full_sequence)
+                if tata_count > 0:
+                    gene_name = extract_gene_name(current_gene)
+                    outfile.write(f'>{gene_name} TATA_count:{tata_count}\n{full_sequence}\n')
 
-# TATA box 的正则表达式
-tata_pattern = re.compile(r"TATA[AT]A[AT]")
+def main():
+    while True:
+        splice_site = input("Enter splice donor/acceptor combination (GTAG, GCAG, or ATAC): ").upper()
+        if splice_site in ['GTAG', 'GCAG', 'ATAC']:
+            break
+        print("Invalid input. Please enter GTAG, GCAG, or ATAC.")
+    
+    input_file = 'D:\\IBI\\IBI1_2024-25\\Practical7\\tata_genes.fa'
+    output_file = f'D:\\IBI\\IBI1_2024-25\\Practical7\\{splice_site}_spliced_genes.fa'
+   
+    process_fasta(input_file, output_file, splice_site)
+    print(f"Results written to {output_file}")
 
-# 解析 FASTA 文件
-with open(input_file, "r") as infile, open(output_file, "w") as outfile:
-    gene_name = ""
-    sequence = ""
+if __name__ == '__main__':
+    main()
 
-    for line in infile:
-        line = line.strip()
-        if line.startswith(">"):  # 遇到新的基因
-            if sequence:
-                # 处理上一个基因的序列
-                introns = re.findall(f"{splice_site[0:2]}(.*?){splice_site[2:4]}", sequence)
-                for intron in introns:
-                    if tata_pattern.search(intron):
-                        tata_count = len(tata_pattern.findall(intron))
-                        outfile.write(f">{gene_name} | TATA_count={tata_count}\n{intron}\n")
 
-            # 提取基因名称
-            gene_name = line.split()[0][1:]  # 去掉 '>'
-            sequence = ""
-        else:
-            sequence += line  # 继续拼接序列
 
-    # 处理最后一个基因
-    introns = re.findall(f"{splice_site[0:2]}(.*?){splice_site[2:4]}", sequence)
-    for intron in introns:
-        if tata_pattern.search(intron):
-            tata_count = len(tata_pattern.findall(intron))
-            outfile.write(f">{gene_name} | TATA_count={tata_count}\n{intron}\n")
 
-print(f"剪切基因已保存到 {output_file}")
+

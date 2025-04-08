@@ -10,7 +10,7 @@ def calculate_paracetamol_mass(weight, strength):
     else:
         volume_ml = mass_mg / (250 / 5)  # transfer to 50 mg/ml
     
-    return round(volume_ml, 2)
+    return volume_ml
 
 # for example
 input_weight = int(input("Enter the weight of the child in kg: "))  # input weight

@@ -6,7 +6,7 @@ class patients:
         self.medical_history = medical_history
     
     def print_details(self):
-        print(f"{self.name}, {self.age}, {self.date}, {self.medical_history}")
+        print(f"Patient Name:{self.name}, Age: {self.age}, date of latest adimission: {self.date}, medical_history: {self.medical_history}")
 
 # for example
 p = patients("John", 25, "2023-10-05", "Diabetes")

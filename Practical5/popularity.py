@@ -2,11 +2,11 @@
 # create a dictionary with given datas
 # print the dictionary
 # import matplotlib
-# use the data in the dictionary to define the x and y axis in the bar plot
+# use the datas in the dictionary to define the x and y axis in the bar plot
 # show the plot
 # ask the user to input a language
 # if the language is in the dictionary, print the popularity of the language
-# elif bye
+# elif the language is not in the dictionary, print that the language is not in the dictionary
 
 Dictionary={"Javascript":62.3,"HTML":52.9,"Python":51,"SQL":51,"TypeScript":38.5}      #creating a dictionary
 for key in Dictionary:

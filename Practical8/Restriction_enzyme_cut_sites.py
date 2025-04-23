@@ -19,7 +19,6 @@ def find_restriction_sites(dna_sequence, enzyme_sequence):
     
             return cut_sites
         
-
 # for example
 print(f"For example, restriction enzyme cut sites:{find_restriction_sites("AGCTGATCGA", "GAT")}")  # output [5]
 

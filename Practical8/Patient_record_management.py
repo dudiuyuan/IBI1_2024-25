@@ -9,5 +9,5 @@ class patients:
         print(f"Patient Name:{self.name}, Age: {self.age}, date of latest adimission: {self.date}, medical_history: {self.medical_history}")
 
 # for example
-p = patients("John", 25, "2023-10-05", "Diabetes")
-p.print_details()  # output：John, 25, 2023-10-05, Diabetes
+p1 = patients("John", 25, "2021-10-05", "Diabetes")
+p1.print_details()  # output：Patient Name:John, Age: 25, date of latest adimission: 2023-10-05, medical_history: Diabetes

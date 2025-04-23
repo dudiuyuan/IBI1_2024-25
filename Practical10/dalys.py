@@ -5,7 +5,6 @@ import numpy as np
 
 # Load data from CSV
 dalys_data = pd.read_csv("D:/IBI/IBI1_2024-25/Practical10/dalys-rate-from-all-causes.csv")
-# dalys_data = pd.read_csv("../dalys-rate-from-all-causes.csv")
 
 # Show third column (Year) for first 10 rows
 print("\nFirst 10 Years:")

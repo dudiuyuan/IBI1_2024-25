@@ -12,7 +12,7 @@ Dictionary={"Javascript":62.3,"HTML":52.9,"Python":51,"SQL":51,"TypeScript":38.5
 for key in Dictionary:
     print(key,":",Dictionary[key],"%")     #print the correct dictionary
 
-import pandas as pd                            #import nessasary libraries
+import pandas as pd                            #import necessary libraries
 import matplotlib.pyplot as plt
 df = pd.DataFrame(list(Dictionary.items()), columns=['Language', 'Users_Percentage'])    #Use Pandas to convert dictionary data into data boxes, making it easy to use its built-in drawing function
 df.plot(kind='bar', x='Language', y='Users_Percentage', color='purple')     #Enter basic parameters to draw a bar chart

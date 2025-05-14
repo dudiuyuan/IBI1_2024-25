@@ -2,10 +2,10 @@ QUESTION:
 What countries had DALYs greater than 650,000 in any year?
 
 LINE NUMBER IN dalys.py:  
-Line 67
+Line 46
 
 RESULT DISCUSSION:  
-The results show that only a few countries, such as India and China, have DALYs exceeding 650,000 in some years. 
-This is expected due to their large populations, which likely contribute significantly to both mortality and morbidity. 
+The results show that only Rwanda had DALYs exceeding 650,000 in 1994. 
+This is expected due to large populations, which likely contribute significantly to both mortality and morbidity. 
 The data highlights how DALYs are influenced not only by the prevalence of diseases but also by population size.
 

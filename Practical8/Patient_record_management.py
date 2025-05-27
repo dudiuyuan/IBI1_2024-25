@@ -10,4 +10,4 @@ class patients:
 
 # for example
 p1 = patients("John", 25, "2021-10-05", "Diabetes")
-p1.print_details()  # output：Patient Name:John, Age: 25, date of latest adimission: 2023-10-05, medical_history: Diabetes
+p1.print_details()  # output：Patient Name:John, Age: 25, date of latest adimission: 2021-10-05, medical_history: Diabetes

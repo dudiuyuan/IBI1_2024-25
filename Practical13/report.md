@@ -14,3 +14,7 @@ The alignment score and percentage of identical amino acids for each of the thre
     BLOSUM62 Score: -228.0
     Percentage Identity: 5.0% 
 A statement recording which of these two sequences are most closely related: The comparison scores and percentage identity of SOD2 between humans and mice are significantly higher than those of random sequences, indicating a close evolutionary relationship between the two.
+
+
+References
+https://pypi.org/project/scoring-matrices/

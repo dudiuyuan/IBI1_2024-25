@@ -1,5 +1,7 @@
 # What does this piece of code do?
-# Answer:Generate two random numbers from 1 to 6. If they are equal, terminate the loop; otherwise, add 1 to the variable.
+# Answer: This code simulates a loop that repeatedly generates two random integers between 1 and 6 (inclusive). 
+# For each iteration, if the two numbers are different, the variable progress is incremented by 1. 
+# The loop continues until the two randomly generated numbers are equal with a 1/6 probability.
 
 # Import libraries
 # randint allows drawing a random number,
@@ -12,10 +14,10 @@ from math import ceil
 
 progress=0
 while progress>=0:
-	progress+=1                      # if not end, progress + 1, which cacn reach infinite.
+	progress+=1                      # If the conditions for the cycle are met (progress>=0), the progress variable is incremented by 1.
 	first_n = randint(1,6)
 	second_n = randint(1,6)
-	if first_n == second_n:          # if the two numbers are the same, the loop breaks, which means that the probability of end is 1/6.
+	if first_n == second_n:          # if the two numbers are the same, the loop breaks, which means that the probability of end is 1/6. Otherwise, restrat the cycle from line 17.
 		print(progress)
 		break
 

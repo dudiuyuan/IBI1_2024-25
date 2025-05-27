@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
-size = 100                                          #Set basic parameters
+size = 100                                          # Set basic parameters
 population = np.zeros((size, size))
 outbreak = np.random.choice(range(size), 2)
 population[outbreak[0], outbreak[1]] = 1
@@ -30,11 +30,11 @@ for t in range(time_steps):
     for (i, j) in new_infections:
         population[i, j] = 1
     
-    # 恢复过程
+    # recover progress
     recovery_mask = (population == 1) & (np.random.rand(size, size) < gamma)
     population[recovery_mask] = 2
     
-    # 每隔10步绘图
+    # draw the picture at every 10 time steps
     if t % 10 == 0:
         plt.figure(figsize=(6, 4), dpi=150)
         plt.imshow(population, cmap='viridis', interpolation='nearest')

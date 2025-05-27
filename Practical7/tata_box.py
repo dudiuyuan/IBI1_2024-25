@@ -21,7 +21,7 @@ with open(input_file, "r") as infile, open(output_file, "w") as outfile:
                 outfile.write("\n")  # change line for separation
 
             # deal with the new gene
-            gene_name = line.split()[0][1:]  # delete '>'
+            gene_name = line.split()[0][1:].split('_')[0]
             sequence = ""
         else:
             sequence += line  # connect the sequence

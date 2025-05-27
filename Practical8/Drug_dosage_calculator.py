@@ -13,8 +13,8 @@ def calculate_paracetamol_mass(weight, strength):
     return volume_ml
 
 # for example
-print(f"The volume of paracetamol to be given is: {calculate_paracetamol_mass(20, 120)} ml.")  # output The volume of paracetamol to be given is: 12.5 ml
-print(f"The volume of paracetamol to be given is: {calculate_paracetamol_mass(50, 250)} ml.")  # output The volume of paracetamol to be given is: 15.0 ml
+print(f"Example1: The volume of paracetamol to be given is: {calculate_paracetamol_mass(20, 120)} ml.")  # output The volume of paracetamol to be given is: 12.5 ml
+print(f"Example2: The volume of paracetamol to be given is: {calculate_paracetamol_mass(50, 250)} ml.")  # output The volume of paracetamol to be given is: 15.0 ml
 input_weight = int(input("Enter the weight of the child in kg: "))  # input weight
 input_strength = int(input("Enter the strength of the paracetamol in mg/5ml (120 or 250): "))  # input strength
 print(f"The volume of paracetamol to be given is: {calculate_paracetamol_mass(input_weight, input_strength)} ml.")  # output the volume

@@ -1,4 +1,3 @@
-import re
 # This script counts the number of TATA boxes in spliced genes and outputs the results to a new FASTA file.
 # It prompts the user to select a splice donor/acceptor combination from a predefined list.
 #define a function to count TATA boxes in spliced genes

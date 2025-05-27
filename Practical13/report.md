@@ -5,6 +5,7 @@
 #The range of percentage identities in the reported online BLAST results: 83.3% ~ 100%
 
 #The alignment score and percentage of identical amino acids for each of the three comparisons that you performed using Python: 
+
     Human-Mouse Alignment:
     BLOSUM62 Score: 1097.0
     Percentage Identity: 90.1%
